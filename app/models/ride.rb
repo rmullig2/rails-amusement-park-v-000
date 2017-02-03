@@ -15,8 +15,7 @@ class Ride < ActiveRecord::Base
       self.user.tickets -= self.attraction.tickets
       self.user.nausea += self.attraction.nausea_rating
       self.user.happiness += self.attraction.happiness_rating
-      tesbinding.pry
-      #self.user.save
+      self.user.save
     end
   end
   
