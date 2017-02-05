@@ -1,0 +1,28 @@
+<h1>Listing attractions</h1>
+<table style="border-collapse: separate; border-spacing: 5px" >
+  <thead>
+    <tr><th border-spacing="3"></th></tr>
+  </thead>
+  <tbody>
+    <% if !@user.admin? %>
+      <td><strong>Picture</strong></td>
+      <td><strong>Name</strong></td>
+      <td><strong>Tickets</strong></td>
+      <td><strong>Details</strong></td>
+      <% @attractions.all.each do |attraction| %>
+        <td><img src="http://www.allthingsclipart.com/05/amusement.park.05.jpg" width="100"></td>
+        <td><%= attraction.name %></td>
+        <td><%= attraction.tickets %></td>
+        <td><%= link_to "Go on #{attraction.name}", attraction_path(attraction.id) %></td>
+      <% end %>
+    <% else %>
+        <br><a href="/attractions/new">New Attraction</a><br>
+        <% @attractions.all.each do |attraction| %>
+          <td><img src="http://www.allthingsclipart.com/05/amusement.park.05.jpg" width="100"></td>
+          <td><%= attraction.name %></td>
+          <td><%= attraction.tickets %></td>
+          <td><%= link_to "Show #{attraction.name}", attraction_path(attraction.id) %></td>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>

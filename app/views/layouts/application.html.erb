@@ -25,6 +25,7 @@
           <ul class="nav navbar-nav">
            <li><%= link_to "Sign up", new_user_path %></li>
            <li><%= link_to "Sign in", signin_path %></li>
+           <li><%= link_to "Log Out", signout_path %></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -32,6 +33,8 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+      <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
       <%= yield %>
     </div>
 
